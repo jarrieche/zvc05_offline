@@ -235,7 +235,31 @@
 						<t:template>
 							<m:Text text="{ReporteDeVentasFiltrado>Kunnr}" wrapping="false"/>
 						</t:template>
-					</t:Column>				
+					</t:Column>	
+					<t:Column sortProperty="Name" filterProperty="Name" width="12rem">
+						<m:Label text="{i18n>Name}"/>
+						<t:template>
+							<m:Text text="{ReporteDeVentasFiltrado>Name}" wrapping="false"/>
+						</t:template>
+					</t:Column>		
+					<t:Column sortProperty="Ktabg" filterProperty="Ktabg" width="12rem">
+						<m:Label text="{i18n>Ktabg}"/>
+						<t:template>
+							<m:Text text="{ReporteDeVentasFiltrado>Ktabg}" wrapping="false"/>
+						</t:template>
+					</t:Column>		
+					<t:Column sortProperty="Erdat" filterProperty="Erdat" width="12rem">
+						<m:Label text="{i18n>Erdat}"/>
+						<t:template>
+							<m:Text text="{ReporteDeVentasFiltrado>Erdat}" wrapping="false"/>
+						</t:template>
+					</t:Column>		
+					<t:Column sortProperty="Vbeln" filterProperty="Vbeln" width="12rem">
+						<m:Label text="{i18n>Vbeln}"/>
+						<t:template>
+							<m:Text text="{ReporteDeVentasFiltrado>Vbeln}" wrapping="false"/>
+						</t:template>
+					</t:Column>			
 				</t:columns>
 				<t:rowActionTemplate>
 					<t:RowAction>

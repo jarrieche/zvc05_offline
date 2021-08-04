@@ -13,6 +13,7 @@ sap.ui.define([
 
 		formatter: formatter,
 
+		
 		_Sync: function(){
 			var that = this;
 			var modelo = "vc05Serv";

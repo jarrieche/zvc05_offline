@@ -247,6 +247,12 @@
 						<t:template>
 							<m:Text text="{ReporteDeVentasFiltrado>Ktabg}" wrapping="false"/>
 						</t:template>
+					</t:Column>	
+					<t:Column sortProperty="Ktast_Txt_Vbka" filterProperty="Ktast_Txt_Vbka" width="12rem">
+						<m:Label text="{i18n>Ktast_Txt_Vbka}"/>
+						<t:template>
+							<m:Text text="{ReporteDeVentasFiltrado>Ktast_Txt_Vbka}" wrapping="false"/>
+						</t:template>
 					</t:Column>		
 					<t:Column sortProperty="Erdat" filterProperty="Erdat" width="12rem">
 						<m:Label text="{i18n>Erdat}"/>
@@ -259,7 +265,25 @@
 						<t:template>
 							<m:Text text="{ReporteDeVentasFiltrado>Vbeln}" wrapping="false"/>
 						</t:template>
-					</t:Column>			
+					</t:Column>	
+					<t:Column sortProperty="Erzet" filterProperty="Erzet" width="12rem">
+						<m:Label text="{i18n>Erzet}"/>
+						<t:template>
+							<m:Text text="{ReporteDeVentasFiltrado>Erzet}" wrapping="false"/>
+						</t:template>
+					</t:Column>	
+					<t:Column sortProperty="Zpers" filterProperty="Zpers" width="12rem">
+						<m:Label text="{i18n>Zpers}"/>
+						<t:template>
+							<m:Text text="{ReporteDeVentasFiltrado>Zpers}" wrapping="false"/>
+						</t:template>
+					</t:Column>	
+					<t:Column sortProperty="Cname" filterProperty="Cname" width="12rem">
+						<m:Label text="{i18n>Cname}"/>
+						<t:template>
+							<m:Text text="{ReporteDeVentasFiltrado>Cname}" wrapping="false"/>
+						</t:template>
+					</t:Column>				
 				</t:columns>
 				<t:rowActionTemplate>
 					<t:RowAction>

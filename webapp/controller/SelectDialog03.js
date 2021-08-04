@@ -83,7 +83,7 @@ sap.ui.define([
 				var aFilters = [];
 				// 1) Search filters (with OR)
 				if (sQuery && sQuery.length > 0) {
-					aFilters.push(new sap.ui.model.Filter("Vtweg", sap.ui.model.FilterOperator.Contains, sQuery));
+					aFilters.push(new sap.ui.model.Filter("Spart", sap.ui.model.FilterOperator.Contains, sQuery));
 					aFilters.push(new sap.ui.model.Filter("Vtext", sap.ui.model.FilterOperator.Contains, sQuery));
 				}
 				var aFinalFilters = aFilters.length > 0 ? [new sap.ui.model.Filter(aFilters, false)] : [];

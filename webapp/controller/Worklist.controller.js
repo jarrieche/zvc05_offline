@@ -191,28 +191,28 @@ sap.ui.define([
 			var that = this;
 			//getModel() llamando a mainService del manest general de la url del serv
 			var modelo = "vc05Serv";
-			var entidad = "CanalDis_SHSet";
+			var entidad = "Sector_SHSet";
 			var dialogName = "SelectDialog03";
 			this._readOdataV2(modelo, entidad).then(function (dataRecibida) {
 				console.log("dataRecibida", dataRecibida);
 				console.log("results", dataRecibida.results);
 				var modeloJson = new JSONModel(dataRecibida.results);
-				that.getView().setModel(modeloJson, "newModelCanalDis");
-				var ModeloSeted = that.getView().getModel("newModelCanalDis");
+				that.getView().setModel(modeloJson, "newModelSector");
+				var ModeloSeted = that.getView().getModel("newModelSector");
 				console.log("ModeloSeted---> ", ModeloSeted);
-				if (!that._oDialog002) {
+				if (!that._oDialog003) {
 					Fragment.load({
 						name: "com.vc05.offline.zvc05offline.view." + dialogName,
 						controller: that
-					}).then(function (oDialog002) {
-						that._oDialog002 = oDialog002;
-						that.getView().addDependent(that._oDialog002);
-						that._oDialog002.setModel(ModeloSeted);
-						that._oDialog002.open();
+					}).then(function (oDialog003) {
+						that._oDialog003 = oDialog003;
+						that.getView().addDependent(that._oDialog003);
+						that._oDialog003.setModel(ModeloSeted);
+						that._oDialog003.open();
 					}.bind(that));
 				} else {
-					that._oDialog002.setModel(ModeloSeted);
-					that._oDialog002.open();
+					that._oDialog003.setModel(ModeloSeted);
+					that._oDialog003.open();
 				}
 			});
 		},

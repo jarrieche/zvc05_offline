@@ -1,13 +1,13 @@
 <core:FragmentDefinition
     xmlns="sap.m"
     xmlns:core="sap.ui.core">
-    <SelectDialog id="SelectDialog_02" noDataText="No se encontraron datos" title="CanalDis" 
+    <SelectDialog id="SelectDialog_03" noDataText="No se encontraron datos" title="Sector" 
     search="handleSearch" 
-    confirm="handleValueHelppress02"
-		cancel="" items="{path:'newModelCanalDis>/'}">
-        <StandardListItem id="id_list_CanalDis" icon="sap-icon://crm-sales" 
-            title="{newModelCanalDis>Vtext}" 
-            info="{newModelCanalDis>Vtweg}" 
+    confirm="handleValueHelppress03"
+		cancel="" items="{path:'newModelSector>/'}">
+        <StandardListItem id="id_list_Sector" icon="sap-icon://crm-sales" 
+            title="{newModelSector>Vtext}" 
+            info="{newModelSector>Spart}" 
             infoState="None"/>
     </SelectDialog>
 </core:FragmentDefinition>

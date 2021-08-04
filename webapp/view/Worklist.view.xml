@@ -1,0 +1,248 @@
+<mvc:View id="Vehiclelist" height="100%" xmlns:mvc="sap.ui.core.mvc" xmlns:m="sap.m" xmlns:layout="sap.ui.layout" xmlns:t="sap.ui.table"
+	xmlns:semantic="sap.f.semantic" controllerName="com.vc05.offline.zvc05offline.controller.Worklist"
+	xmlns:chart="sap.suite.ui.microchart" xmlns:plugins="sap.ui.table.plugins" xmlns:unified="sap.ui.unified" xmlns:core="sap.ui.core"
+	xmlns:form="sap.ui.layout.form">
+	<semantic:SemanticPage id="kami01" headerPinnable="false" toggleHeaderOnTitleClick="true" preserveHeaderStateOnScroll="false"
+		titleAreaShrinkRatio="1:1.6:1.6" showFooter="false">
+		<!-- Title Heading-->
+		<semantic:titleHeading>
+			<m:Title text="{i18n>Monitor de Ventas}"/>
+		</semantic:titleHeading>
+		<semantic:titleBreadcrumbs></semantic:titleBreadcrumbs>
+		<semantic:titleSnappedOnMobile>
+			<m:Title text="{i18n>worklistViewTitle}"/>
+		</semantic:titleSnappedOnMobile>
+		<semantic:titleContent></semantic:titleContent>
+		<semantic:titleSnappedContent>
+			<m:Text text="{i18n>objectViewTitle}"/>
+		</semantic:titleSnappedContent>
+		<semantic:titleCustomTextActions>
+		<!-- <m:Button icon="sap-icon://customer" text="User Card" tooltip="User Card" press="iFrame" /> -->
+		</semantic:titleCustomTextActions>
+		<!-- Header Content -->
+		<semantic:headerContent>
+			<layout:BlockLayout background="Dashboard" visible="true">
+				<layout:content>
+					<layout:BlockLayoutRow scrollable="false">
+						<layout:content>
+							<layout:BlockLayoutCell width="2">
+								<layout:content>
+									<form:Form width="100%" editable="true" visible="true">
+										<form:formContainers>
+											<form:FormContainer visible="true">
+												<form:formElements>																								
+													<form:FormElement visible="true">
+														<form:label>
+															<m:Label text="{i18n>Organ}" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+														</form:label>
+														<form:fields>
+															<m:MultiInput 
+																id="help_01" 
+																width="100%" 
+																required="true" 
+																tokenUpdate="onTokenUpdate" 
+																showValueHelp="true"
+																valueHelpOnly="true"
+																valueHelpRequest="fnAbr1rMatchCode"/>
+														</form:fields>
+													</form:FormElement>
+													<form:FormElement visible="true">
+														<form:label>
+															<m:Label text="{i18n>Canal de Distribucion}" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+														</form:label>
+														<form:fields>
+															<m:MultiInput 
+																id="help_02" 
+																width="100%" 
+																required="true" 
+																tokenUpdate="onTokenUpdate" 
+																showValueHelp="true"
+																valueHelpOnly="true"
+																valueHelpRequest="fnAbr2rMatchCode"/>
+														</form:fields>
+													</form:FormElement>
+													<form:FormElement visible="true">
+														<form:label>
+															<m:Label text="{i18n>Sector}" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+														</form:label>
+														<form:fields>
+															<m:MultiInput 
+																id="help_03" 
+																width="100%" 
+																required="true" 
+																tokenUpdate="onTokenUpdate" 
+																showValueHelp="true"
+																valueHelpOnly="true"
+																valueHelpRequest="fnAbr3rMatchCode"/>
+														</form:fields>
+													</form:FormElement>
+													<form:FormElement visible="true">
+														<form:label>
+															<m:Label text="{i18n>Oficina de ventas}" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+														</form:label>
+														<form:fields>
+															<m:MultiInput 
+																id="help_04" 
+																width="100%" 
+																required="true" 
+																tokenUpdate="onTokenUpdate" 
+																showValueHelp="true"
+																valueHelpOnly="true"
+																valueHelpRequest="fnAbr4rMatchCode"/>
+														</form:fields>
+													</form:FormElement>
+												</form:formElements>
+											</form:FormContainer>
+										</form:formContainers>
+										<form:layout>
+											<form:ResponsiveGridLayout adjustLabelSpan="false" columnsL="2" labelSpanL="3" columnsM="1" labelSpanM="2" labelSpanS="12"/>
+										</form:layout>
+									</form:Form>
+									<m:Toolbar width="100%">
+										<m:ToolbarSpacer/>
+										<m:ToolbarSpacer/>
+										<m:Button  id="btnSincronizar"  type="Accept" text="{i18n>Sincronizar}" press="_Sync"/>
+										<m:Button  id="btnConsultar"  type="Emphasized" text="{i18n>Consultar}" press="_handleSearch"/>
+									</m:Toolbar>
+								</layout:content>
+							</layout:BlockLayoutCell>
+							<layout:BlockLayoutCell width="2" title="" titleAlignment="Begin" titleLevel="Auto" id="kami">
+								<layout:content>
+									<form:Form width="100%" editable="true" visible="true">
+										<form:formContainers>
+											<form:FormContainer visible="true">
+												<form:formElements>																								
+													<form:FormElement visible="true">
+														<form:label>
+															<m:Label text="{i18n>Grupo de vendedores}" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+														</form:label>
+														<form:fields>
+															<m:MultiInput 
+																id="help_05" 
+																width="100%" 
+																required="true" 
+																tokenUpdate="onTokenUpdate" 
+																showValueHelp="true"
+																valueHelpOnly="true"
+																valueHelpRequest="fnAbr5rMatchCode"/>
+														</form:fields>
+													</form:FormElement>
+													<form:FormElement visible="true">
+														<form:label>
+															<m:Label text="{i18n>Cliente}" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+														</form:label>
+														<form:fields>
+															<m:MultiInput 
+																id="help_06" 
+																width="100%" 
+																required="true" 
+																tokenUpdate="onTokenUpdate" 
+																showValueHelp="true"
+																valueHelpOnly="true"
+																valueHelpRequest="fnAbr6rMatchCode"/>
+														</form:fields>
+													</form:FormElement>
+													<form:FormElement visible="true">
+														<form:label>
+															<m:Label text="{i18n>Clase de contacto}" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+														</form:label>
+														<form:fields>
+															<m:MultiInput 
+																id="help_07" 
+																width="100%" 
+																required="true" 
+																tokenUpdate="onTokenUpdate" 
+																showValueHelp="true"
+																valueHelpOnly="true"
+																valueHelpRequest="fnAbr7rMatchCode"/>
+														</form:fields>
+													</form:FormElement>
+													<form:FormElement visible="true">
+														<form:label>
+															<m:Label text="{i18n>Interlocutor}" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+														</form:label>
+														<form:fields>
+															<m:MultiInput 
+																id="help_08" 
+																width="100%" 
+																required="true" 
+																tokenUpdate="onTokenUpdate" 
+																showValueHelp="true"
+																valueHelpOnly="true"
+																valueHelpRequest="fnAbr8rMatchCode"/>
+														</form:fields>
+													</form:FormElement>
+													<form:FormElement visible="true">
+														<form:label>
+															<m:Label text="{i18n>Empleado}" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+														</form:label>
+														<form:fields>
+															<m:MultiInput 
+																id="help_09" 
+																width="100%" 
+																required="true" 
+																tokenUpdate="onTokenUpdate" 
+																showValueHelp="true"
+																valueHelpOnly="true"
+																valueHelpRequest="fnAbr9rMatchCode"/>
+														</form:fields>
+													</form:FormElement>
+												</form:formElements>
+											</form:FormContainer>
+										</form:formContainers>
+										<form:layout>
+											<form:ResponsiveGridLayout adjustLabelSpan="false" columnsL="2" labelSpanL="3" columnsM="1" labelSpanM="2" labelSpanS="12"/>
+										</form:layout>
+									</form:Form>									
+								</layout:content>
+							</layout:BlockLayoutCell>
+										</layout:content>
+					</layout:BlockLayoutRow>
+					
+				</layout:content>
+			</layout:BlockLayout>
+		</semantic:headerContent>
+		<semantic:content>
+			<t:Table id="table" rows="{ path: 'ReporteDeVentasFiltrado>/reporteVC05'}" selectionMode="None"
+				rowActionCount="1" class="sapUiTinyMarginBottom" rowSelectionChange=".onPress" visibleRowCount="10"
+				ariaLabelledBy="title">
+				<t:extension>
+					<m:OverflowToolbar>
+						<m:Title id="title" text="{i18n>worklistTableTitleCount}"/>
+						<m:ToolbarSpacer width=""/>
+						<m:SearchField id="idSearchField" placeholder="Buscar" visible="true" width="20%" search="onSearchFieldLiveChange" tooltip="{i18n>SearchField}"/>
+						<m:Button id="btnDownload" icon="sap-icon://excel-attachment" tooltip="{i18n>btnExportar}" text="" visible="true" type="Accept" press="download"/>
+					</m:OverflowToolbar>
+				</t:extension>
+				<t:rowSettingsTemplate>
+				<!--<t:RowSettings highlight="{= (${VehiculoFiltrado>Vin})? 'Success' : 'Error' }"/>-->
+				</t:rowSettingsTemplate>
+				<t:columns>
+					<t:Column sortProperty="Vkorg" filterProperty="Vkorg" width="12rem">
+						<m:Label text="{i18n>Organ}"/>
+						<t:template>
+							<m:Text text="{ReporteDeVentasFiltrado>Vkorg}" wrapping="false"/>
+						</t:template>
+					</t:Column>	
+					<t:Column sortProperty="Ktext" filterProperty="Ktext" width="12rem">
+						<m:Label text="{i18n>Ktext}"/>
+						<t:template>
+							<m:Text text="{ReporteDeVentasFiltrado>Ktext}" wrapping="false"/>
+						</t:template>
+					</t:Column>		
+					<t:Column sortProperty="Kunnr" filterProperty="Kunnr" width="12rem">
+						<m:Label text="{i18n>Kunnr}"/>
+						<t:template>
+							<m:Text text="{ReporteDeVentasFiltrado>Kunnr}" wrapping="false"/>
+						</t:template>
+					</t:Column>				
+				</t:columns>
+				<t:rowActionTemplate>
+					<t:RowAction>
+						<t:RowActionItem press=".onPress" type="Navigation" icon="sap-icon://slim-arrow-right"/>
+					</t:RowAction>
+				</t:rowActionTemplate>
+			</t:Table>
+		</semantic:content>
+	</semantic:SemanticPage>
+</mvc:View>

@@ -1,0 +1,13 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+    <SelectDialog id="SelectDialog_01" noDataText="No se encontraron datos" title="OrgVtas" 
+    search="handleSearch" 
+    confirm="handleValueHelppress01"
+		cancel="" items="{path:'newModelOrgVtas>/'}">
+        <StandardListItem id="id_list_orgVtas" icon="sap-icon://crm-sales" 
+            title="{newModelOrgVtas>Vtext}" 
+            info="{newModelOrgVtas>Vkorg}" 
+            infoState="None"/>
+    </SelectDialog>
+</core:FragmentDefinition>

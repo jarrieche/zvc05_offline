@@ -1,0 +1,13 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+    <SelectDialog id="SelectDialog_05" noDataText="No se encontraron datos" title="Grupo de Vendedores" 
+    search="handleSearch" 
+    confirm="handleValueHelppress05"
+		cancel="" items="{path:'newModelGrupoV>/'}">
+        <StandardListItem id="id_list_GrupoV" icon="sap-icon://crm-sales" 
+            title="{newModelGrupoV>Bezei}" 
+            info="{newModelGrupoV>Vkgrp}" 
+            infoState="None"/>
+    </SelectDialog>
+</core:FragmentDefinition>

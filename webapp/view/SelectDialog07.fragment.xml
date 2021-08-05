@@ -1,0 +1,13 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+    <SelectDialog id="SelectDialog_07" noDataText="No se encontraron datos" title="Clase de Contacto" 
+    search="handleSearch" 
+    confirm="handleValueHelppress07"
+		cancel="" items="{path:'newModelClaseCont>/'}">
+        <StandardListItem id="id_list_ClaseCont" icon="sap-icon://crm-sales" 
+            title="{newModelClaseCont>Vtext}" 
+            info="{newModelClaseCont>Ktaar}" 
+            infoState="None"/>
+    </SelectDialog>
+</core:FragmentDefinition>

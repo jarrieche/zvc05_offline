@@ -1,0 +1,13 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+    <SelectDialog id="SelectDialog_04" noDataText="No se encontraron datos" title="Oficina de Ventas" 
+    search="handleSearch" 
+    confirm="handleValueHelppress04"
+		cancel="" items="{path:'newModelOficina>/'}">
+        <StandardListItem id="id_list_Oficina" icon="sap-icon://crm-sales" 
+            title="{newModelOficina>Bezei}" 
+            info="{newModelOficina>Vkbur}" 
+            infoState="None"/>
+    </SelectDialog>
+</core:FragmentDefinition>

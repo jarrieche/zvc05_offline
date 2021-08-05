@@ -1,0 +1,13 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+    <SelectDialog id="SelectDialog_08" noDataText="No se encontraron datos" title="Interlocutor" 
+    search="handleSearch" 
+    confirm="handleValueHelppress08"
+		cancel="" items="{path:'newModelInterloc>/'}">
+        <StandardListItem id="id_list_Interloc" icon="sap-icon://crm-sales" 
+            title="{newModelInterloc>NameLast}" 
+            info="{newModelInterloc>Lifnr}" 
+            infoState="None"/>
+    </SelectDialog>
+</core:FragmentDefinition>

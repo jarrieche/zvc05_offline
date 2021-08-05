@@ -238,6 +238,317 @@ sap.ui.define([
 				oInput.resetProperty("value");
 			}
 		},
+		fnAbr4rMatchCode: function (oEvent) {
+			var that = this;
+			//getModel() llamando a mainService del manest general de la url del serv
+			var modelo = "vc05Serv";
+			var entidad = "HTvburSet";
+			var dialogName = "SelectDialog04";
+			this._readOdataV2(modelo, entidad).then(function (dataRecibida) {
+				console.log("dataRecibida", dataRecibida);
+				console.log("results", dataRecibida.results);
+				var modeloJson = new JSONModel(dataRecibida.results);
+				that.getView().setModel(modeloJson, "newModelOficina");
+				var ModeloSeted = that.getView().getModel("newModelOficina");
+				console.log("ModeloSeted---> ", ModeloSeted);
+				if (!that._oDialog004) {
+					Fragment.load({
+						name: "com.vc05.offline.zvc05offline.view." + dialogName,
+						controller: that
+					}).then(function (oDialog004) {
+						that._oDialog004 = oDialog004;
+						that.getView().addDependent(that._oDialog004);
+						that._oDialog004.setModel(ModeloSeted);
+						that._oDialog004.open();
+					}.bind(that));
+				} else {
+					that._oDialog004.setModel(ModeloSeted);
+					that._oDialog004.open();
+				}
+			});
+		},
+		handleValueHelppress04: function (oEvent) {
+			this.byId("help_04").removeAllTokens();
+			this.elementos = [];
+			var oSelectedItems = oEvent.getParameter("selectedItems");
+			var aTitle = [];
+			if (oSelectedItems !== "undefined") {
+				for (var title = 0; title < oSelectedItems.length; title++) {
+					var text = oSelectedItems[title].getTitle();
+					aTitle.push(text);
+					this.elementos.push(oSelectedItems[title].getInfo());
+				}
+				/* agregando los valores seleccionados a los tokens.*/
+				for (var cont = 0; cont < aTitle.length; cont++) {
+					this.byId("help_04").addToken(new sap.m.Token({
+						key: this.elementos[cont],
+						text: aTitle[cont]
+					}));
+				}
+			} else {
+				oInput.resetProperty("value");
+			}
+		},
+		//newModelGrupoV
+		fnAbr5rMatchCode: function (oEvent) {
+			var that = this;
+			//getModel() llamando a mainService del manest general de la url del serv
+			var modelo = "vc05Serv";
+			var entidad = "HTvkgrSet";
+			var dialogName = "SelectDialog05";
+			this._readOdataV2(modelo, entidad).then(function (dataRecibida) {
+				console.log("dataRecibida", dataRecibida);
+				console.log("results", dataRecibida.results);
+				var modeloJson = new JSONModel(dataRecibida.results);
+				that.getView().setModel(modeloJson, "newModelGrupoV");
+				var ModeloSeted = that.getView().getModel("newModelGrupoV");
+				console.log("ModeloSeted---> ", ModeloSeted);
+				if (!that._oDialog005) {
+					Fragment.load({
+						name: "com.vc05.offline.zvc05offline.view." + dialogName,
+						controller: that
+					}).then(function (oDialog005) {
+						that._oDialog005 = oDialog005;
+						that.getView().addDependent(that._oDialog005);
+						that._oDialog005.setModel(ModeloSeted);
+						that._oDialog005.open();
+					}.bind(that));
+				} else {
+					that._oDialog005.setModel(ModeloSeted);
+					that._oDialog005.open();
+				}
+			});
+		},
+		handleValueHelppress05: function (oEvent) {
+			this.byId("help_05").removeAllTokens();
+			this.elementos = [];
+			var oSelectedItems = oEvent.getParameter("selectedItems");
+			var aTitle = [];
+			if (oSelectedItems !== "undefined") {
+				for (var title = 0; title < oSelectedItems.length; title++) {
+					var text = oSelectedItems[title].getTitle();
+					aTitle.push(text);
+					this.elementos.push(oSelectedItems[title].getInfo());
+				}
+				/* agregando los valores seleccionados a los tokens.*/
+				for (var cont = 0; cont < aTitle.length; cont++) {
+					this.byId("help_05").addToken(new sap.m.Token({
+						key: this.elementos[cont],
+						text: aTitle[cont]
+					}));
+				}
+			} else {
+				oInput.resetProperty("value");
+			}
+		},
+		//newModelCliente
+		fnAbr6rMatchCode: function (oEvent) {
+			var that = this;
+			//getModel() llamando a mainService del manest general de la url del serv
+			var modelo = "vc05Serv";
+			var entidad = "DebiaSet";
+			var dialogName = "SelectDialog06";
+			this._readOdataV2(modelo, entidad).then(function (dataRecibida) {
+				console.log("dataRecibida", dataRecibida);
+				console.log("results", dataRecibida.results);
+				var modeloJson = new JSONModel(dataRecibida.results);
+				that.getView().setModel(modeloJson, "newModelCliente");
+				var ModeloSeted = that.getView().getModel("newModelCliente");
+				console.log("ModeloSeted---> ", ModeloSeted);
+				if (!that._oDialog006) {
+					Fragment.load({
+						name: "com.vc05.offline.zvc05offline.view." + dialogName,
+						controller: that
+					}).then(function (oDialog006) {
+						that._oDialog006 = oDialog006;
+						that.getView().addDependent(that._oDialog006);
+						that._oDialog006.setModel(ModeloSeted);
+						that._oDialog006.open();
+					}.bind(that));
+				} else {
+					that._oDialog006.setModel(ModeloSeted);
+					that._oDialog006.open();
+				}
+			});
+		},
+		handleValueHelppress06: function (oEvent) {
+			this.byId("help_06").removeAllTokens();
+			this.elementos = [];
+			var oSelectedItems = oEvent.getParameter("selectedItems");
+			var aTitle = [];
+			if (oSelectedItems !== "undefined") {
+				for (var title = 0; title < oSelectedItems.length; title++) {
+					var text = oSelectedItems[title].getTitle();
+					aTitle.push(text);
+					this.elementos.push(oSelectedItems[title].getInfo());
+				}
+				/* agregando los valores seleccionados a los tokens.*/
+				for (var cont = 0; cont < aTitle.length; cont++) {
+					this.byId("help_06").addToken(new sap.m.Token({
+						key: this.elementos[cont],
+						text: aTitle[cont]
+					}));
+				}
+			} else {
+				oInput.resetProperty("value");
+			}
+		},
+		//newModelClaseCont
+		fnAbr7rMatchCode: function (oEvent) {
+			var that = this;
+			//getModel() llamando a mainService del manest general de la url del serv
+			var modelo = "vc05Serv";
+			var entidad = "HKtaarSet";
+			var dialogName = "SelectDialog07";
+			this._readOdataV2(modelo, entidad).then(function (dataRecibida) {
+				console.log("dataRecibida", dataRecibida);
+				console.log("results", dataRecibida.results);
+				var modeloJson = new JSONModel(dataRecibida.results);
+				that.getView().setModel(modeloJson, "newModelClaseCont");
+				var ModeloSeted = that.getView().getModel("newModelClaseCont");
+				console.log("ModeloSeted---> ", ModeloSeted);
+				if (!that._oDialog007) {
+					Fragment.load({
+						name: "com.vc05.offline.zvc05offline.view." + dialogName,
+						controller: that
+					}).then(function (oDialog007) {
+						that._oDialog007 = oDialog007;
+						that.getView().addDependent(that._oDialog007);
+						that._oDialog007.setModel(ModeloSeted);
+						that._oDialog007.open();
+					}.bind(that));
+				} else {
+					that._oDialog007.setModel(ModeloSeted);
+					that._oDialog007.open();
+				}
+			});
+		},
+		handleValueHelppress07: function (oEvent) {
+			this.byId("help_07").removeAllTokens();
+			this.elementos = [];
+			var oSelectedItems = oEvent.getParameter("selectedItems");
+			var aTitle = [];
+			if (oSelectedItems !== "undefined") {
+				for (var title = 0; title < oSelectedItems.length; title++) {
+					var text = oSelectedItems[title].getTitle();
+					aTitle.push(text);
+					this.elementos.push(oSelectedItems[title].getInfo());
+				}
+				/* agregando los valores seleccionados a los tokens.*/
+				for (var cont = 0; cont < aTitle.length; cont++) {
+					this.byId("help_07").addToken(new sap.m.Token({
+						key: this.elementos[cont],
+						text: aTitle[cont]
+					}));
+				}
+			} else {
+				oInput.resetProperty("value");
+			}
+		},
+		//newModelInterloc
+		fnAbr8rMatchCode: function (oEvent) {
+			var that = this;
+			//getModel() llamando a mainService del manest general de la url del serv
+			var modelo = "vc05Serv";
+			var entidad = "VknkContactSet";
+			var dialogName = "SelectDialog08";
+			this._readOdataV2(modelo, entidad).then(function (dataRecibida) {
+				console.log("dataRecibida", dataRecibida);
+				console.log("results", dataRecibida.results);
+				var modeloJson = new JSONModel(dataRecibida.results);
+				that.getView().setModel(modeloJson, "newModelInterloc");
+				var ModeloSeted = that.getView().getModel("newModelInterloc");
+				console.log("ModeloSeted---> ", ModeloSeted);
+				if (!that._oDialog008) {
+					Fragment.load({
+						name: "com.vc05.offline.zvc05offline.view." + dialogName,
+						controller: that
+					}).then(function (oDialog008) {
+						that._oDialog008 = oDialog008;
+						that.getView().addDependent(that._oDialog008);
+						that._oDialog008.setModel(ModeloSeted);
+						that._oDialog008.open();
+					}.bind(that));
+				} else {
+					that._oDialog008.setModel(ModeloSeted);
+					that._oDialog008.open();
+				}
+			});
+		},
+		handleValueHelppress08: function (oEvent) {
+			this.byId("help_08").removeAllTokens();
+			this.elementos = [];
+			var oSelectedItems = oEvent.getParameter("selectedItems");
+			var aTitle = [];
+			if (oSelectedItems !== "undefined") {
+				for (var title = 0; title < oSelectedItems.length; title++) {
+					var text = oSelectedItems[title].getTitle();
+					aTitle.push(text);
+					this.elementos.push(oSelectedItems[title].getInfo());
+				}
+				/* agregando los valores seleccionados a los tokens.*/
+				for (var cont = 0; cont < aTitle.length; cont++) {
+					this.byId("help_08").addToken(new sap.m.Token({
+						key: this.elementos[cont],
+						text: aTitle[cont]
+					}));
+				}
+			} else {
+				oInput.resetProperty("value");
+			}
+		},
+		//newModelEmpleado
+		fnAbr9rMatchCode: function (oEvent) {
+			var that = this;
+			//getModel() llamando a mainService del manest general de la url del serv
+			var modelo = "vc05Serv";
+			var entidad = "PremjSet";
+			var dialogName = "SelectDialog09";
+			this._readOdataV2(modelo, entidad).then(function (dataRecibida) {
+				console.log("dataRecibida", dataRecibida);
+				console.log("results", dataRecibida.results);
+				var modeloJson = new JSONModel(dataRecibida.results);
+				that.getView().setModel(modeloJson, "newModelEmpleado");
+				var ModeloSeted = that.getView().getModel("newModelEmpleado");
+				console.log("ModeloSeted---> ", ModeloSeted);
+				if (!that._oDialog009) {
+					Fragment.load({
+						name: "com.vc05.offline.zvc05offline.view." + dialogName,
+						controller: that
+					}).then(function (oDialog009) {
+						that._oDialog009 = oDialog009;
+						that.getView().addDependent(that._oDialog009);
+						that._oDialog009.setModel(ModeloSeted);
+						that._oDialog009.open();
+					}.bind(that));
+				} else {
+					that._oDialog009.setModel(ModeloSeted);
+					that._oDialog009.open();
+				}
+			});
+		},
+		handleValueHelppress09: function (oEvent) {
+			this.byId("help_09").removeAllTokens();
+			this.elementos = [];
+			var oSelectedItems = oEvent.getParameter("selectedItems");
+			var aTitle = [];
+			if (oSelectedItems !== "undefined") {
+				for (var title = 0; title < oSelectedItems.length; title++) {
+					var text = oSelectedItems[title].getTitle();
+					aTitle.push(text);
+					this.elementos.push(oSelectedItems[title].getInfo());
+				}
+				/* agregando los valores seleccionados a los tokens.*/
+				for (var cont = 0; cont < aTitle.length; cont++) {
+					this.byId("help_09").addToken(new sap.m.Token({
+						key: this.elementos[cont],
+						text: aTitle[cont]
+					}));
+				}
+			} else {
+				oInput.resetProperty("value");
+			}
+		},
 		/* =========================================================== */
 		/* lifecycle methods                                           */
 		/* =========================================================== */

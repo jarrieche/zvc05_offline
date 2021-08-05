@@ -1,0 +1,13 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+    <SelectDialog id="SelectDialog_09" noDataText="No se encontraron datos" title="Empleado" 
+    search="handleSearch" 
+    confirm="handleValueHelppress09"
+		cancel="" items="{path:'newModelEmpleado>/'}">
+        <StandardListItem id="id_list_Empleado" icon="sap-icon://crm-sales" 
+            title="{newModelEmpleado>Vorna}" 
+            info="{newModelEmpleado>Pernr}" 
+            infoState="None"/>
+    </SelectDialog>
+</core:FragmentDefinition>

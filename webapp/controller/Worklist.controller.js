@@ -34,6 +34,14 @@ sap.ui.define([
 		_handleSearch: function () {
 			var that = this;
 			var multiInputOrgVtas = this.getView().byId("help_01");
+			var multiInputCanal = this.getView().byId("help_02");
+			var multiInputSector = this.getView().byId("help_03");
+			var multiInputOrgVtas = this.getView().byId("help_04");
+			var multiInputOrgVtas = this.getView().byId("help_05");
+			var multiInputOrgVtas = this.getView().byId("help_06");
+			var multiInputOrgVtas = this.getView().byId("help_07");
+			var multiInputOrgVtas = this.getView().byId("help_08");
+			var multiInputOrgVtas = this.getView().byId("help_09");
 			let sizeOrgVtas = multiInputOrgVtas.getTokens().length;
 			if (sizeOrgVtas == 0) {
 				MessageBox.error(
@@ -48,11 +56,13 @@ sap.ui.define([
 			} else {
 				//var vText = multiInputOrgVtas.getTokens()[0].getText();
 				var vKorg = multiInputOrgVtas.getTokens()[0].getKey();
+				var Vtweg = multiInputCanal.getTokens()[0].getKey();
+				var Spart = multiInputSector.getTokens()[0].getKey();
 				
 				var filtro = new Array();
 				filtro.push(new sap.ui.model.Filter("Vkorg", sap.ui.model.FilterOperator.EQ, vKorg));
-				//filtro.push(new sap.ui.model.Filter("Vkorg", sap.ui.model.FilterOperator.EQ, vKorg));
-				//filtro.push(new sap.ui.model.Filter("Vkorg", sap.ui.model.FilterOperator.EQ, vKorg));
+				filtro.push(new sap.ui.model.Filter("Vtweg", sap.ui.model.FilterOperator.EQ, Vtweg));
+				filtro.push(new sap.ui.model.Filter("Spart", sap.ui.model.FilterOperator.EQ, Spart));
 				this.read(filtro);
 			}
 		},

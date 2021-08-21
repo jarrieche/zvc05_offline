@@ -2,7 +2,7 @@
     xmlns="sap.m"
     xmlns:core="sap.ui.core">
     <SelectDialog id="SelectDialog_02" noDataText="No se encontraron datos" title="CanalDis" 
-    search="handleSearch" 
+    search="handleSearch02" 
     confirm="handleValueHelppress02"
 		cancel="" items="{path:'newModelCanalDis>/'}">
         <StandardListItem id="id_list_CanalDis" icon="sap-icon://crm-sales" 

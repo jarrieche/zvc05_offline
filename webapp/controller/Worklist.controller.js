@@ -2,32 +2,88 @@ sap.ui.define([
 	"./BaseController",
 	"sap/ui/model/json/JSONModel",
 	"../model/formatter",
+
 	"sap/ui/model/Filter",
 	"sap/ui/model/FilterOperator",
 	"sap/ui/core/Fragment",
-	"sap/m/MessageBox"
-], function (BaseController, JSONModel, formatter, Filter, FilterOperator, Fragment, MessageBox) {
+	"sap/m/MessageBox",
+	"sap/ui/export/library",
+	"sap/ui/export/Spreadsheet",
+], function (BaseController, JSONModel, formatter, Filter, FilterOperator, Fragment, MessageBox, exportLibrary, Spreadsheet,) {
 	"use strict";
 
 	return BaseController.extend("com.vc05.offline.zvc05offline.controller.Worklist", {
 
 		formatter: formatter,
 
-		
-		_Sync: function(){
+
+		_Sync: function () {
 			var that = this;
 			var modelo = "vc05Serv";
 			var entidad = "VC05Set";
-            this._readOdataV2(modelo, entidad).then(function (dataRecibida) {
-				console.log("Leo tabla syncr----> ", dataRecibida);
+			this._readOdataV2(modelo, entidad).then(function (dataRecibida) {
 				var ventasRealizadas = dataRecibida.results;
-				var auxModeloVentas = new sap.ui.model.json.JSONModel();
-				auxModeloVentas.setData({
-					reporteVC05: ventasRealizadas
-				});
-				that.getView().setModel(auxModeloVentas, "ReporteDeVentasFiltrado");
-				sap.ui.getCore().setModel(auxModeloVentas, "ReporteDeVentasFiltrado");				
-							
+				localStorage.setItem('VC05Set', JSON.stringify(ventasRealizadas));
+			});
+
+			var entidad00 = "OrgSales_SHSet";
+			this._readOdataV2(modelo, entidad00).then(function (dataRecibida) {
+				var ventasRealizadas = dataRecibida.results;
+				localStorage.setItem('OrgSales_SHSet', JSON.stringify(ventasRealizadas));
+			});
+
+			var entidad01 = "CanalDis_SHSet";
+			this._readOdataV2(modelo, entidad01).then(function (dataRecibida) {
+				var ventasRealizadas = dataRecibida.results;
+				localStorage.setItem('CanalDis_SHSet', JSON.stringify(ventasRealizadas));
+			});
+
+			var entidad02 = "CanalDis_SHSet";
+			this._readOdataV2(modelo, entidad02).then(function (dataRecibida) {
+				var ventasRealizadas = dataRecibida.results;
+				localStorage.setItem('CanalDis_SHSet', JSON.stringify(ventasRealizadas));
+			});
+
+			var entidad03 = "Sector_SHSet";
+			this._readOdataV2(modelo, entidad03).then(function (dataRecibida) {
+				var ventasRealizadas = dataRecibida.results;
+				localStorage.setItem('Sector_SHSet', JSON.stringify(ventasRealizadas));
+			});
+
+			var entidad04 = "HTvburSet";
+			this._readOdataV2(modelo, entidad04).then(function (dataRecibida) {
+				var ventasRealizadas = dataRecibida.results;
+				localStorage.setItem('HTvburSet', JSON.stringify(ventasRealizadas));
+			});
+
+			var entidad05 = "HTvkgrSet";
+			this._readOdataV2(modelo, entidad05).then(function (dataRecibida) {
+				var ventasRealizadas = dataRecibida.results;
+				localStorage.setItem('HTvkgrSet', JSON.stringify(ventasRealizadas));
+			});
+
+			var entidad06 = "DebiaSet";
+			this._readOdataV2(modelo, entidad06).then(function (dataRecibida) {
+				var ventasRealizadas = dataRecibida.results;
+				localStorage.setItem('DebiaSet', JSON.stringify(ventasRealizadas));
+			});
+
+			var entidad07 = "HKtaarSet";
+			this._readOdataV2(modelo, entidad07).then(function (dataRecibida) {
+				var ventasRealizadas = dataRecibida.results;
+				localStorage.setItem('HKtaarSet', JSON.stringify(ventasRealizadas));
+			});
+
+			var entidad08 = "VknkContactSet";
+			this._readOdataV2(modelo, entidad08).then(function (dataRecibida) {
+				var ventasRealizadas = dataRecibida.results;
+				localStorage.setItem('VknkContactSet', JSON.stringify(ventasRealizadas));
+			});
+
+			var entidad09 = "PremjSet";
+			this._readOdataV2(modelo, entidad09).then(function (dataRecibida) {
+				var ventasRealizadas = dataRecibida.results;
+				localStorage.setItem('PremjSet', JSON.stringify(ventasRealizadas));
 			});
 		},
 
@@ -36,16 +92,19 @@ sap.ui.define([
 			var multiInputOrgVtas = this.getView().byId("help_01");
 			var multiInputCanal = this.getView().byId("help_02");
 			var multiInputSector = this.getView().byId("help_03");
-			var multiInputOrgVtas = this.getView().byId("help_04");
-			var multiInputOrgVtas = this.getView().byId("help_05");
-			var multiInputOrgVtas = this.getView().byId("help_06");
-			var multiInputOrgVtas = this.getView().byId("help_07");
-			var multiInputOrgVtas = this.getView().byId("help_08");
-			var multiInputOrgVtas = this.getView().byId("help_09");
+			// var multiInputOrgVtas = this.getView().byId("help_04");
+			// var multiInputOrgVtas = this.getView().byId("help_05");
+			// var multiInputOrgVtas = this.getView().byId("help_06");
+			// var multiInputOrgVtas = this.getView().byId("help_07");
+			// var multiInputOrgVtas = this.getView().byId("help_08");
+			// var multiInputOrgVtas = this.getView().byId("help_09");
 			let sizeOrgVtas = multiInputOrgVtas.getTokens().length;
+			//let sizeCanal = multiInputCanal.getTokens().length;
+			//let sizeSector = multiInputSector.getTokens().length;
+			//if (sizeOrgVtas == 0 || sizeCanal == 0 || sizeSector == 0) {
 			if (sizeOrgVtas == 0) {
 				MessageBox.error(
-					"Favor de llenar todos los datos obligatorios", {
+					"Favor de llenar Organizacion de Ventas", {
 					icon: MessageBox.Icon.ERROR,
 					title: "Monitor de Ventas",
 					actions: ["Cerrar"],
@@ -56,13 +115,14 @@ sap.ui.define([
 			} else {
 				//var vText = multiInputOrgVtas.getTokens()[0].getText();
 				var vKorg = multiInputOrgVtas.getTokens()[0].getKey();
-				var Vtweg = multiInputCanal.getTokens()[0].getKey();
-				var Spart = multiInputSector.getTokens()[0].getKey();
-				
+				//var Vtweg = multiInputCanal.getTokens()[0].getKey();
+				//var Spart = multiInputSector.getTokens()[0].getKey();
+
 				var filtro = new Array();
 				filtro.push(new sap.ui.model.Filter("Vkorg", sap.ui.model.FilterOperator.EQ, vKorg));
-				filtro.push(new sap.ui.model.Filter("Vtweg", sap.ui.model.FilterOperator.EQ, Vtweg));
-				filtro.push(new sap.ui.model.Filter("Spart", sap.ui.model.FilterOperator.EQ, Spart));
+				//filtro.push(new sap.ui.model.Filter("Vtweg", sap.ui.model.FilterOperator.EQ, Vtweg));
+				//filtro.push(new sap.ui.model.Filter("Spart", sap.ui.model.FilterOperator.EQ, Spart));
+				//this.read(entidad, filtro);
 				this.read(filtro);
 			}
 		},
@@ -74,23 +134,57 @@ sap.ui.define([
 			var num = 0;
 			var oModel = this.getView().getModel("i18n").getResourceBundle();
 			this.getView().byId("table").setBusy(true);
-			this._readOdataV2(modelo, entidad, filtro).then(function (dataRecibida) {
-				console.log("dataRecibida----> ", dataRecibida);
-				var ventasRealizadas = dataRecibida.results;
-				var auxModeloVentas = new sap.ui.model.json.JSONModel();
-				auxModeloVentas.setData({
-					reporteVC05: ventasRealizadas
-				});
-				that.getView().setModel(auxModeloVentas, "ReporteDeVentasFiltrado");
-				sap.ui.getCore().setModel(auxModeloVentas, "ReporteDeVentasFiltrado");				
+			if (navigator.onLine) {
 				
-				var oTable = that.getView().byId("table");
-				var oBinding = oTable.getBinding("rows");
-				num = oBinding.getLength();
-				oModel.getText("worklistTableTitleCount", [num]);
-				that.byId("title").setText(oModel.getText("worklistTableTitleCount", [num]));
-				that.getView().byId("table").setBusy(false);
-			});
+				//that._Sync();
+
+				this._readOdataV2(modelo, entidad, filtro).then(function (dataRecibida) {
+					console.log("dataRecibida----> ", dataRecibida);
+					var ventasRealizadas = dataRecibida.results;
+					var auxModeloVentas = new sap.ui.model.json.JSONModel();
+					auxModeloVentas.setData({
+						reporteVC05: ventasRealizadas
+					});
+					that.getView().setModel(auxModeloVentas, "ReporteDeVentasFiltrado");
+					sap.ui.getCore().setModel(auxModeloVentas, "ReporteDeVentasFiltrado");
+	
+					var oTable = that.getView().byId("table");
+					var oBinding = oTable.getBinding("rows");
+					num = oBinding.getLength();
+					oModel.getText("worklistTableTitleCount", [num]);
+					that.byId("title").setText(oModel.getText("worklistTableTitleCount", [num]));
+					that.getView().byId("table").setBusy(false);
+				});
+			} else {
+				
+				if (!localStorage.getItem(entidad)) {
+					MessageBox.error("Usted esta fuera de linea y no sicronizo Datos!!!", {
+						icon: MessageBox.Icon.ERROR,
+						title: "Error"
+					});
+				} else {
+					
+					console.log("filtro pendnte",filtro)
+					//HACER TRABAJAR LOS FTROS, FTRAR JSON OFFLE
+					var datosGuardados = JSON.parse(localStorage.getItem(entidad));
+					var ventasRealizadas = datosGuardados;
+					var auxModeloVentas = new sap.ui.model.json.JSONModel();
+					auxModeloVentas.setData({
+						reporteVC05: ventasRealizadas
+					});
+					that.getView().setModel(auxModeloVentas, "ReporteDeVentasFiltrado");
+					sap.ui.getCore().setModel(auxModeloVentas, "ReporteDeVentasFiltrado");
+	
+					var oTable = that.getView().byId("table");
+					var oBinding = oTable.getBinding("rows");
+					oBinding.filter(filtro);
+					num = oBinding.getLength();
+					oModel.getText("worklistTableTitleCount", [num]);
+					that.byId("title").setText(oModel.getText("worklistTableTitleCount", [num]));
+					that.getView().byId("table").setBusy(false);
+				}
+			}
+			
 		},
 
 		fnAbr1rMatchCode: function (oEvent) {
@@ -99,28 +193,57 @@ sap.ui.define([
 			var modelo = "vc05Serv";
 			var entidad = "OrgSales_SHSet";
 			var dialogName = "SelectDialog01";
-			this._readOdataV2(modelo, entidad).then(function (dataRecibida) {
-				console.log("dataRecibida", dataRecibida);
-				console.log("results", dataRecibida.results);
-				var modeloJson = new JSONModel(dataRecibida.results);
-				that.getView().setModel(modeloJson, "newModelOrgVtas");
-				var ModeloSeted = that.getView().getModel("newModelOrgVtas");
-				console.log("ModeloSeted---> ", ModeloSeted);
-				if (!that._oDialog001) {
-					Fragment.load({
-						name: "com.vc05.offline.zvc05offline.view." + dialogName,
-						controller: that
-					}).then(function (oDialog001) {
-						that._oDialog001 = oDialog001;
-						that.getView().addDependent(that._oDialog001);
+			if (navigator.onLine) {
+				this._readOdataV2(modelo, entidad).then(function (dataRecibida) {
+					console.log("dataRecibida", dataRecibida);
+					console.log("results", dataRecibida.results);
+					var modeloJson = new JSONModel(dataRecibida.results);
+					that.getView().setModel(modeloJson, "newModelOrgVtas");
+					var ModeloSeted = that.getView().getModel("newModelOrgVtas");
+					console.log("ModeloSeted---> ", ModeloSeted);
+					if (!that._oDialog001) {
+						Fragment.load({
+							name: "com.vc05.offline.zvc05offline.view." + dialogName,
+							controller: that
+						}).then(function (oDialog001) {
+							that._oDialog001 = oDialog001;
+							that.getView().addDependent(that._oDialog001);
+							that._oDialog001.setModel(ModeloSeted);
+							that._oDialog001.open();
+						}.bind(that));
+					} else {
 						that._oDialog001.setModel(ModeloSeted);
 						that._oDialog001.open();
-					}.bind(that));
+					}
+				});
+			} else {
+				if (!localStorage.getItem(entidad)) {
+					MessageBox.error("Usted esta fuera de linea y no sicronizo Datos!!!", {
+						icon: MessageBox.Icon.ERROR,
+						title: "Error"
+					});
 				} else {
-					that._oDialog001.setModel(ModeloSeted);
-					that._oDialog001.open();
+					var datosGuardados = JSON.parse(localStorage.getItem(entidad));
+					var modeloJson = new JSONModel(datosGuardados);
+					that.getView().setModel(modeloJson, "newModelOrgVtas");
+					var ModeloSeted = that.getView().getModel("newModelOrgVtas");
+
+					if (!that._oDialog001) {
+						Fragment.load({
+							name: "com.vc05.offline.zvc05offline.view." + dialogName,
+							controller: that
+						}).then(function (oDialog001) {
+							that._oDialog001 = oDialog001;
+							that.getView().addDependent(that._oDialog001);
+							that._oDialog001.setModel(ModeloSeted);
+							that._oDialog001.open();
+						}.bind(that));
+					} else {
+						that._oDialog001.setModel(ModeloSeted);
+						that._oDialog001.open();
+					}
 				}
-			});
+			}
 		},
 		handleValueHelppress01: function (oEvent) {
 			this.byId("help_01").removeAllTokens();
@@ -151,28 +274,56 @@ sap.ui.define([
 			var modelo = "vc05Serv";
 			var entidad = "CanalDis_SHSet";
 			var dialogName = "SelectDialog02";
-			this._readOdataV2(modelo, entidad).then(function (dataRecibida) {
-				console.log("dataRecibida", dataRecibida);
-				console.log("results", dataRecibida.results);
-				var modeloJson = new JSONModel(dataRecibida.results);
-				that.getView().setModel(modeloJson, "newModelCanalDis");
-				var ModeloSeted = that.getView().getModel("newModelCanalDis");
-				console.log("ModeloSeted---> ", ModeloSeted);
-				if (!that._oDialog002) {
-					Fragment.load({
-						name: "com.vc05.offline.zvc05offline.view." + dialogName,
-						controller: that
-					}).then(function (oDialog002) {
-						that._oDialog002 = oDialog002;
-						that.getView().addDependent(that._oDialog002);
+			if (navigator.onLine) {
+				this._readOdataV2(modelo, entidad).then(function (dataRecibida) {
+					console.log("dataRecibida", dataRecibida);
+					console.log("results", dataRecibida.results);
+					var modeloJson = new JSONModel(dataRecibida.results);
+					that.getView().setModel(modeloJson, "newModelCanalDis");
+					var ModeloSeted = that.getView().getModel("newModelCanalDis");
+					console.log("ModeloSeted---> ", ModeloSeted);
+					if (!that._oDialog002) {
+						Fragment.load({
+							name: "com.vc05.offline.zvc05offline.view." + dialogName,
+							controller: that
+						}).then(function (oDialog002) {
+							that._oDialog002 = oDialog002;
+							that.getView().addDependent(that._oDialog002);
+							that._oDialog002.setModel(ModeloSeted);
+							that._oDialog002.open();
+						}.bind(that));
+					} else {
 						that._oDialog002.setModel(ModeloSeted);
 						that._oDialog002.open();
-					}.bind(that));
+					}
+				});
+			} else {
+				if (!localStorage.getItem(entidad)) {
+					MessageBox.error("Usted esta fuera de linea y no sicronizo Datos!!!", {
+						icon: MessageBox.Icon.ERROR,
+						title: "Error"
+					});
 				} else {
-					that._oDialog002.setModel(ModeloSeted);
-					that._oDialog002.open();
+					var datosGuardados = JSON.parse(localStorage.getItem(entidad));
+					var modeloJson = new JSONModel(datosGuardados);
+					that.getView().setModel(modeloJson, "newModelCanalDis");
+					var ModeloSeted = that.getView().getModel("newModelCanalDis");
+					if (!that._oDialog002) {
+						Fragment.load({
+							name: "com.vc05.offline.zvc05offline.view." + dialogName,
+							controller: that
+						}).then(function (oDialog002) {
+							that._oDialog002 = oDialog002;
+							that.getView().addDependent(that._oDialog002);
+							that._oDialog002.setModel(ModeloSeted);
+							that._oDialog002.open();
+						}.bind(that));
+					} else {
+						that._oDialog002.setModel(ModeloSeted);
+						that._oDialog002.open();
+					}
 				}
-			});
+			}
 		},
 		handleValueHelppress02: function (oEvent) {
 			this.byId("help_02").removeAllTokens();
@@ -688,8 +839,14 @@ sap.ui.define([
 		 * @private
 		 */
 		_showObject: function (oItem) {
+			var that = this;
+			var rowSeleccinado = oItem.getParent().getBindingContext("ReporteDeVentasFiltrado").getObject();
+			console.log("rowSeleccinado-------------------->", rowSeleccinado)
+			var auxModeloSelected = new sap.ui.model.json.JSONModel(rowSeleccinado);					
+					that.getView().setModel(auxModeloSelected, "SelectedData");
+					sap.ui.getCore().setModel(auxModeloSelected, "SelectedData");
 			this.getRouter().navTo("object", {
-				objectId: oItem.getBindingContext().getProperty("Kunnr")
+				objectId: rowSeleccinado.Vbeln
 			});
 		},
 
@@ -706,7 +863,144 @@ sap.ui.define([
 			if (aTableSearchState.length !== 0) {
 				oViewModel.setProperty("/tableNoDataText", this.getResourceBundle().getText("worklistNoDataWithSearchText"));
 			}
-		}
+		},
+
+
+		download: function (oEvent) {
+			var that = this;
+			var url2 = window.location.origin + window.location.pathname;
+			url2 = url2.substring(0, url2.length - 11);
+			console.log("url2---> ",url2)
+			var model = that.getView().getModel("ReporteDeVentasFiltrado");
+			if (model == undefined || model == "undefined") {
+				var errorMessage = "No hay consulta para exportar";
+				sap.m.MessageBox.show(errorMessage, sap.m.MessageBox.Icon.WARNING, "Exportar Consulta");
+			} else {
+				that.downloadExcel(model.oData.reporteVC05);
+			}
+		},
+		downloadExcel: function (oModel) {
+			var aCols, aProducts, oSettings, oSheet;
+			aCols = this.createColumns();
+			aProducts = oModel;
+			oSettings = {
+				workbook: {
+					columns: aCols
+				},
+				dataSource: aProducts,
+				fileName: "Monitor de Ventas"
+			};
+			oSheet = new Spreadsheet(oSettings);
+			oSheet.build()
+				.then(function () {
+					//MessageToast.show('Termino la descarga!');
+				})
+				.finally(function () {
+					oSheet.destroy();
+				});
+		},
+		createColumns: function () {
+			return [{
+				label: "Org. Ventas",
+				property: "Vkorg",
+			}, {
+				label: "Texto",
+				property: "Ktext",
+			}, {
+				label: "Segmento",
+				property: "Segmento",
+			}, {
+				label: "DescSeg",
+				property: "DescSeg",
+			}, {
+				label: "Marca",
+				property: "Marca",
+			}, {
+				label: "Modelo",
+				property: "Modelo",
+			}, {
+				label: "Año",
+				property: "Anno",
+			}, {
+				label: "Color Exterior",
+				property: "ColorExt",
+			}, {
+				label: "Color Interior",
+				property: "ColorInt",
+			}, {
+				label: "Gama",
+				property: "Gama",
+			}];
+		},
+		onSearchFieldLiveChange: function (oEvent) {			
+			var oTable = this.getView().byId("table");
+			var sQuery = oEvent.getParameter("query");
+			var oGlobalFilter = null;
+			var oFilter = [];
+			if (sQuery) {
+				var oGlobalFilter = new Filter([
+					new Filter("Vkorg", FilterOperator.Contains, sQuery),
+					new Filter("Ktext", FilterOperator.Contains, sQuery),
+					new Filter("Ktast_Txt_Vbka", FilterOperator.Contains, sQuery)
+				], false);
+				oFilter = new sap.ui.model.Filter([oGlobalFilter], true);
+			}
+			oFilter = oGlobalFilter;
+			// filter binding
+			var oBinding = oTable.getBinding("rows");
+			oBinding.filter(oFilter);
+		},
+		handleSearch01: function (oEvent) {
+            var sQuery = oEvent.getParameter("value");
+            var oGlobalFilter = null;
+            var oFilter = [];
+            if (sQuery != null) {
+                var oGlobalFilter = new Filter([
+                    new Filter("Vtext", FilterOperator.Contains, sQuery),
+                    new Filter("Vkorg", FilterOperator.Contains, sQuery)
+                ], false);
+                oFilter = new sap.ui.model.Filter([oGlobalFilter], true);
+            } else {
+                oGlobalFilter = null;
+            }
+            oFilter = oGlobalFilter;
+            var oBinding = oEvent.getSource().getBinding("items");
+            oBinding.filter([oFilter]);
+        },
+		handleSearch02: function (oEvent) {
+            var sQuery = oEvent.getParameter("value");
+            var oGlobalFilter = null;
+            var oFilter = [];
+            if (sQuery != null) {
+                var oGlobalFilter = new Filter([
+                    new Filter("Vtext", FilterOperator.Contains, sQuery),
+                    new Filter("Vtweg", FilterOperator.Contains, sQuery)
+                ], false);
+                oFilter = new sap.ui.model.Filter([oGlobalFilter], true);
+            } else {
+                oGlobalFilter = null;
+            }
+            oFilter = oGlobalFilter;
+            var oBinding = oEvent.getSource().getBinding("items");
+            oBinding.filter([oFilter]);
+        },
+		handleSearch03: function (oEvent) {
+            var sQuery = oEvent.getParameter("value");
+            var oGlobalFilter = null;
+            var oFilter = [];
+            if (sQuery != null) {
+                var oGlobalFilter = new Filter([
+                    new Filter("Vtext", FilterOperator.Contains, sQuery),
+                    new Filter("Spart", FilterOperator.Contains, sQuery)
+                ], false);
+                oFilter = new sap.ui.model.Filter([oGlobalFilter], true);
+            } else {
+                oGlobalFilter = null;
+            }
+            oFilter = oGlobalFilter;
+            var oBinding = oEvent.getSource().getBinding("items");
+            oBinding.filter([oFilter]);
+        },
 
 	});
 });

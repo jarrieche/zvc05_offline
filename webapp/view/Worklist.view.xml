@@ -1,4 +1,5 @@
-<mvc:View id="Vehiclelist" height="100%" xmlns:mvc="sap.ui.core.mvc" xmlns:m="sap.m" xmlns:layout="sap.ui.layout" xmlns:t="sap.ui.table"
+<mvc:View id="Vehiclelist" height="100%" xmlns:mvc="sap.ui.core.mvc" 
+xmlns:m="sap.m" xmlns:layout="sap.ui.layout" xmlns:t="sap.ui.table"
 	xmlns:semantic="sap.f.semantic" controllerName="com.vc05.offline.zvc05offline.controller.Worklist"
 	xmlns:chart="sap.suite.ui.microchart" xmlns:plugins="sap.ui.table.plugins" xmlns:unified="sap.ui.unified" xmlns:core="sap.ui.core"
 	xmlns:form="sap.ui.layout.form">
@@ -91,27 +92,6 @@
 																valueHelpRequest="fnAbr4rMatchCode"/>
 														</form:fields>
 													</form:FormElement>
-												</form:formElements>
-											</form:FormContainer>
-										</form:formContainers>
-										<form:layout>
-											<form:ResponsiveGridLayout adjustLabelSpan="false" columnsL="2" labelSpanL="3" columnsM="1" labelSpanM="2" labelSpanS="12"/>
-										</form:layout>
-									</form:Form>
-									<m:Toolbar width="100%">
-										<m:ToolbarSpacer/>
-										<m:ToolbarSpacer/>
-										<m:Button  id="btnSincronizar"  type="Accept" text="{i18n>Sincronizar}" press="_Sync"/>
-										<m:Button  id="btnConsultar"  type="Emphasized" text="{i18n>Consultar}" press="_handleSearch"/>
-									</m:Toolbar>
-								</layout:content>
-							</layout:BlockLayoutCell>
-							<layout:BlockLayoutCell width="2" title="" titleAlignment="Begin" titleLevel="Auto" id="kami">
-								<layout:content>
-									<form:Form width="100%" editable="true" visible="true">
-										<form:formContainers>
-											<form:FormContainer visible="true">
-												<form:formElements>																								
 													<form:FormElement visible="true">
 														<form:label>
 															<m:Label text="{i18n>Grupo de vendedores}" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
@@ -127,6 +107,22 @@
 																valueHelpRequest="fnAbr5rMatchCode"/>
 														</form:fields>
 													</form:FormElement>
+												</form:formElements>
+											</form:FormContainer>
+										</form:formContainers>
+										<form:layout>
+											<form:ResponsiveGridLayout adjustLabelSpan="false" columnsL="2" labelSpanL="3" columnsM="1" labelSpanM="2" labelSpanS="12"/>
+										</form:layout>
+									</form:Form>
+									
+								</layout:content>
+							</layout:BlockLayoutCell>
+							<layout:BlockLayoutCell width="2" title="" titleAlignment="Begin" titleLevel="Auto" id="kami">
+								<layout:content>
+									<form:Form width="100%" editable="true" visible="true">
+										<form:formContainers>
+											<form:FormContainer visible="true">
+												<form:formElements>																								
 													<form:FormElement visible="true">
 														<form:label>
 															<m:Label text="{i18n>Cliente}" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
@@ -180,7 +176,7 @@
 															<m:MultiInput 
 																id="help_09" 
 																width="100%" 
-																required="true" 
+																required="false" 
 																tokenUpdate="onTokenUpdate" 
 																showValueHelp="true"
 																valueHelpOnly="true"
@@ -193,7 +189,13 @@
 										<form:layout>
 											<form:ResponsiveGridLayout adjustLabelSpan="false" columnsL="2" labelSpanL="3" columnsM="1" labelSpanM="2" labelSpanS="12"/>
 										</form:layout>
-									</form:Form>									
+									</form:Form>
+									<m:Toolbar width="100%">
+										<m:ToolbarSpacer/>
+										<m:ToolbarSpacer/>
+										<m:Button  id="btnSincronizar"  type="Accept" text="{i18n>Sincronizar}" press="_Sync"/>
+										<m:Button  id="btnConsultar"  type="Emphasized" text="{i18n>Consultar}" press="_handleSearch"/>
+									</m:Toolbar>									
 								</layout:content>
 							</layout:BlockLayoutCell>
 										</layout:content>
@@ -212,6 +214,7 @@
 						<m:ToolbarSpacer width=""/>
 						<m:SearchField id="idSearchField" placeholder="Buscar" visible="true" width="20%" search="onSearchFieldLiveChange" tooltip="{i18n>SearchField}"/>
 						<m:Button id="btnDownload" icon="sap-icon://excel-attachment" tooltip="{i18n>btnExportar}" text="" visible="true" type="Accept" press="download"/>
+						<m:Button id="btnDetalle" icon="sap-icon://user" tooltip="{i18n>btnDetalle}" text="" visible="true" type="Reject" press="_detalleGral"/>
 					</m:OverflowToolbar>
 				</t:extension>
 				<t:rowSettingsTemplate>

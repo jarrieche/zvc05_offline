@@ -24,11 +24,11 @@ sap.ui.define([
 			// between the busy indication for loading the view's meta data
 			var iOriginalBusyDelay,
 				oViewModel = new JSONModel({
-					busy : true,
+					busy : false,
 					delay : 0
 				});
 
-			this.getRouter().getRoute("object").attachPatternMatched(this._onObjectMatched, this);
+			
 
 			// Store original busy indicator delay, so it can be restored later on
 			iOriginalBusyDelay = this.getView().getBusyIndicatorDelay();
@@ -38,6 +38,8 @@ sap.ui.define([
 					oViewModel.setProperty("/delay", iOriginalBusyDelay);
 				}
 			);
+
+			this.getRouter().getRoute("object").attachPatternMatched(this._onObjectMatched, this);
 		},
 
 		/* =========================================================== */
@@ -72,13 +74,11 @@ sap.ui.define([
 		 * @private
 		 */
 		_onObjectMatched : function (oEvent) {
-			var sObjectId =  oEvent.getParameter("arguments").objectId;
-			this.getModel().metadataLoaded().then( function() {
-				var sObjectPath = this.getModel().createKey("VC05Set", {
-					Kunnr :  sObjectId
-				});
-				this._bindView("/" + sObjectPath);
-			}.bind(this));
+			var that = this;
+			var SelectedData = sap.ui.getCore().getModel("SelectedData");
+			var auxModeloSelected = new sap.ui.model.json.JSONModel(SelectedData.getData());					
+			that.getView().setModel(auxModeloSelected, "SelectedData");
+			sap.ui.core.BusyIndicator.hide();
 		},
 
 		/**

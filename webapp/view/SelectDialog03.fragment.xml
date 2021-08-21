@@ -2,7 +2,7 @@
     xmlns="sap.m"
     xmlns:core="sap.ui.core">
     <SelectDialog id="SelectDialog_03" noDataText="No se encontraron datos" title="Sector" 
-    search="handleSearch" 
+    search="handleSearch03" 
     confirm="handleValueHelppress03"
 		cancel="" items="{path:'newModelSector>/'}">
         <StandardListItem id="id_list_Sector" icon="sap-icon://crm-sales" 

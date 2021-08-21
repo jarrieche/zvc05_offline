@@ -1,32 +1,71 @@
-<mvc:View
+<mvc:View id="Selectedlist" height="100%" xmlns:mvc="sap.ui.core.mvc" xmlns:m="sap.m" xmlns:layout="sap.ui.layout"
+	xmlns:t="sap.ui.table" xmlns:semantic="sap.f.semantic" 
 	controllerName="com.vc05.offline.zvc05offline.controller.Object"
-	xmlns="sap.m"
-	xmlns:mvc="sap.ui.core.mvc"
-	xmlns:semantic="sap.f.semantic">
-
-	<semantic:SemanticPage
-		id="page"
-		headerPinnable="false"
-		toggleHeaderOnTitleClick="false"
-		busy="{objectView>/busy}"
+	xmlns:plugins="sap.ui.table.plugins" xmlns:unified="sap.ui.unified" xmlns:core="sap.ui.core" xmlns:form="sap.ui.layout.form">
+	<semantic:SemanticPage id="kami02" headerExpanded="false" headerPinnable="true" toggleHeaderOnTitleClick="true"
+		preserveHeaderStateOnScroll="true" titleAreaShrinkRatio="1:1.6:1.6" showFooter="false" busy="{objectView>/busy}"
 		busyIndicatorDelay="{objectView>/delay}">
-
+		<!-- Title Heading-->
 		<semantic:titleHeading>
-			<Title
-				text="{Vkorg}"
-				level="H2"/>
+			<m:Title text="{i18n>objectViewTitle}"/>
 		</semantic:titleHeading>
-
+		<!-- Title Breadcrumbs-->
+		<semantic:titleBreadcrumbs>
+			<m:Breadcrumbs>
+				<m:Link text="{i18n>worklistViewTitle}" press="onNavBack"/>
+			</m:Breadcrumbs>
+		</semantic:titleBreadcrumbs>
+		<!-- Title Snapped On Mobile Content-->
+		<semantic:titleSnappedOnMobile>
+			<m:Title text="{i18n>objectViewTitle}"/>
+		</semantic:titleSnappedOnMobile>
+		<!-- Title Content-->
+		<semantic:titleContent></semantic:titleContent>
+		<!-- TitleExpanded content-->
+		<semantic:titleSnappedContent>
+			<m:Text text="{i18n>Vbeln}: {SelectedData>/Vbeln}"/>
+		</semantic:titleSnappedContent>
+		<semantic:titleCustomTextActions>
+			
+		</semantic:titleCustomTextActions>
+		<!-- Header Content -->
 		<semantic:headerContent>
-			<ObjectNumber
-			/>
+			
 		</semantic:headerContent>
-
-		<semantic:sendEmailAction>
-			<semantic:SendEmailAction id="shareEmail" press=".onShareEmailPress"/>
-		</semantic:sendEmailAction>
-
-
+		<semantic:content>
+			<layout:BlockLayout background="Dashboard" visible="true">
+				<layout:content>
+					<layout:BlockLayoutRow scrollable="true">
+						<layout:content>
+							<layout:BlockLayoutCell>
+								<layout:content>
+									<form:SimpleForm editable="true" id="formV">
+										<form:content>
+											<m:Label text="{i18n>Vbeln}" design="Bold" width="auto" textAlign="End" textDirection="Inherit" visible="true"/>
+											<m:Text text="{SelectedData>/Vbeln}" width="auto" maxLines="3" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+											<m:Label text="{i18n>Vkorg}" design="Bold" width="auto" textAlign="End" textDirection="Inherit" visible="true"/>
+											<m:Text text="{SelectedData>/Vkorg}" width="auto" maxLines="3" wrapping="false" textAlign="Begin" textDirection="Inherit"
+												visible="true"/>
+											<m:Label text="{i18n>Cname}" design="Bold" width="auto" textAlign="End" textDirection="Inherit" visible="true"/>
+											<m:Text text="{SelectedData>/Cname}" width="auto" maxLines="3" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+											<m:Label text="{i18n>Erdat}" design="Bold" width="auto" textAlign="End" textDirection="Inherit" visible="true"/>
+											<m:Text text="{SelectedData>/Erdat}" width="auto" maxLines="3" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+											<m:Label text="{i18n>Modelo}" design="Bold" width="auto" textAlign="End" textDirection="Inherit" visible="true"/>
+											<m:Text text="{SelectedData>/Modelo}" width="auto" maxLines="3" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+											<m:Label text="{i18n>Colorext}" design="Bold" width="auto" textAlign="End" textDirection="Inherit" visible="true"/>
+											<m:Text text="{SelectedData>/ColorExt}" width="auto" maxLines="3" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+											<m:Label text="{i18n>Colorint}" design="Bold" width="auto" textAlign="End" textDirection="Inherit" visible="true"/>
+											<m:Text text="{SelectedData>/ColorInt}" width="auto" maxLines="3" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+											<m:Label text="{i18n>Sermotor}" design="Bold" width="auto" textAlign="End" textDirection="Inherit" visible="true"/>
+											<m:Text text="{SelectedData>/SerMotor}" width="auto" maxLines="3" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+										</form:content>
+									</form:SimpleForm>
+								</layout:content>
+							</layout:BlockLayoutCell>
+						</layout:content>
+					</layout:BlockLayoutRow>
+				</layout:content>
+			</layout:BlockLayout>
+		</semantic:content>
 	</semantic:SemanticPage>
-
 </mvc:View>
